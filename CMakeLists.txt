@@ -10,11 +10,11 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 set(RDKAFKA_BUILD_STATIC ON CACHE BOOL "")
 
-include_directories( ./libs/yaml-cpp/include ./libs/librdkafka)
+include_directories( ${PROJECT_SOURCE_DIR}/libs/librdkafka/)
 
 add_executable(LibrdKafkaSample src/LibrdKafkaSample.cpp)
 
-add_subdirectory( ./libs/librdkafka)
-target_link_libraries( LibrdKafkaSample debug rdkafka++)
+add_subdirectory( ${PROJECT_SOURCE_DIR}/libs/librdkafka)
+target_link_libraries( LibrdKafkaSample PUBLIC rdkafka++)
 
 target_include_directories(LibrdKafkaSample PUBLIC "${PROJECT_BINARY_DIR}/src")
